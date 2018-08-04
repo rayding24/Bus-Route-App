@@ -56,7 +56,10 @@ public class BusStopPlotter extends MapViewOverlay {
     public void markStops(Location currentLocation) {
         Drawable stopIconDrawable = activity.getResources().getDrawable(R.drawable.stop_icon);
 
-        // TODO: complete the implementation of this method (Task 5)
+        updateVisibleArea();
+
+
+
     }
 
     /**
