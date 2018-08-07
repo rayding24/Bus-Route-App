@@ -39,7 +39,7 @@ public class BusLocationPlotter extends MapViewOverlay {
      * Plot buses serving selected stop
      */
     public void plotBuses() {
-        // TODO: complete the implementation of this method (Task 10)
+        // : complete the implementation of this method (Task 10)
 
 
         if (StopManager.getInstance().getSelected() == null) {
@@ -56,6 +56,7 @@ public class BusLocationPlotter extends MapViewOverlay {
         }
 
     }
+    
 
     /**
      * Create the overlay for bus markers.

@@ -129,7 +129,7 @@ public class BusesAreUs extends Activity implements LocationListener, StopSelect
      */
     @Override
     public void onLocationChanged(Stop nearest, LatLon locn) {
-        // TODO: Complete the implementation of this method (Task 6)
+        // : Complete the implementation of this method (Task 6)
 //          int radius = StopManager.RADIUS;
 ////          if () {
 ////
@@ -183,7 +183,7 @@ public class BusesAreUs extends Activity implements LocationListener, StopSelect
      */
     @Override
     public void onStopSelected(Stop stop) {
-        // TODO: Complete the implementation of this method (Task 7)
+        // : Complete the implementation of this method (Task 7)
         try {
             StopManager.getInstance().setSelected(stop);
             new DownloadBusLocationDataTask().execute(stop);
