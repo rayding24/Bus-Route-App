@@ -49,6 +49,20 @@ public class StopManager implements Iterable<Stop> {
     }
 
     /**
+     * Set the stop selected by user
+     *
+     * @param selected stop selected by user
+     * @throws StopException when stop manager doesn't contain selected stop
+     */
+    public void setSelected(Stop selected) throws StopException {
+        if (stopMap.containsKey(selected.getNumber())) {
+            selectedStop = selected;
+        } else {
+            throw new StopException("No such stop: " + selected.getNumber() + " " + selected.getName());
+        }
+    }
+
+    /**
      * Get stop with given number, creating it and adding it to the collection of all stops if necessary.
      * If it is necessary to create a new stop, then provide it with an empty string as its name,
      * and a default location somewhere in the lower mainland as its location.
@@ -88,20 +102,6 @@ public class StopManager implements Iterable<Stop> {
         s = new Stop(number, name, locn);
         stopMap.put(number, s);
         return s;
-    }
-
-    /**
-     * Set the stop selected by user
-     *
-     * @param selected stop selected by user
-     * @throws StopException when stop manager doesn't contain selected stop
-     */
-    public void setSelected(Stop selected) throws StopException {
-        if (stopMap.containsKey(selected.getNumber())) {
-            selectedStop = selected;
-        } else {
-            throw new StopException("No such stop: " + selected.getNumber() + " " + selected.getName());
-        }
     }
 
     /**

@@ -36,10 +36,29 @@ import org.json.JSONException;
 public class BusesAreUs extends Activity implements LocationListener, StopSelectionListener {
     private static final String TSA_TAG = "TSA_TAG";
     private static final String MAP_TAG = "Map Fragment Tag";
+    private static Context context;
     private MapDisplayFragment fragment;
     private TextView nearestStopLabel;
     private Stop myNearestStop;
-    private static Context context;
+
+    /**
+     * Return a scaling factor for resources that should stay "about the same size" on the screen
+     *
+     * @return a factor to multiply fonts and widths of things to keep them visible on screen of varying resolution
+     */
+    public static float dpiFactor() {
+        float x = context.getResources().getDisplayMetrics().density;
+        return x > 2.0f ? x / 2.0f : 1.0f;
+    }
+
+    /**
+     * Returns the application context
+     *
+     * @return the application context
+     */
+    public static Context getContext() {
+        return context;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,7 +81,7 @@ public class BusesAreUs extends Activity implements LocationListener, StopSelect
     /**
      * Initialize fragment to display map
      *
-     * @param savedInstanceState  state saved in previous instance
+     * @param savedInstanceState state saved in previous instance
      */
     private void initializeFragment(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
@@ -122,9 +141,7 @@ public class BusesAreUs extends Activity implements LocationListener, StopSelect
         if (myNearestStop == null) {
 
             nearestStopLabel.setText(R.string.out_of_range);
-        }
-
-        else {
+        } else {
             nearestStopLabel.setText(myNearestStop.getName());
         }
     }
@@ -169,27 +186,11 @@ public class BusesAreUs extends Activity implements LocationListener, StopSelect
         // TODO: Complete the implementation of this method (Task 7)
         try {
             StopManager.getInstance().setSelected(stop);
+            new DownloadBusLocationDataTask().execute(stop);
+
         } catch (StopException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Return a scaling factor for resources that should stay "about the same size" on the screen
-     *
-     * @return a factor to multiply fonts and widths of things to keep them visible on screen of varying resolution
-     */
-    public static float dpiFactor() {
-        float x = context.getResources().getDisplayMetrics().density;
-        return x > 2.0f ? x / 2.0f : 1.0f;
-    }
-
-    /**
-     * Returns the application context
-     * @return    the application context
-     */
-    public static Context getContext() {
-        return context;
     }
 
     /**

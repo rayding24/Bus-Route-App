@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import ca.ubc.cs.cpsc210.translink.R;
 import ca.ubc.cs.cpsc210.translink.model.Arrival;
+import ca.ubc.cs.cpsc210.translink.model.StopManager;
 
 import java.util.ArrayList;
 
@@ -36,8 +37,15 @@ public class ArrivalsListFragment extends ListFragment {
      */
     private ArrayList<Arrival> getArrivalsForSelectedStop() {
         // TODO: Complete the implementation of this method (Task 9)
-        return new ArrayList<>();
+        ArrayList<Arrival> arrivalsForSelectedStop = new ArrayList<>();
+
+        for (Arrival arrival : StopManager.getInstance().getSelected()) {
+            arrivalsForSelectedStop.add(arrival);
+        }
+
+        return arrivalsForSelectedStop;
     }
+
 
     /**
      * Array adapter for list of arrivals displayed to user
@@ -65,8 +73,9 @@ public class ArrivalsListFragment extends ListFragment {
 
         /**
          * Set view of text field that displays wait time
-         * @param convertView  the text view
-         * @param arrival  the arrival to be displayed
+         *
+         * @param convertView the text view
+         * @param arrival     the arrival to be displayed
          */
         private void setWaitTimeTextView(View convertView, Arrival arrival) {
             TextView waitTime = (TextView) convertView.findViewById(R.id.wait_time);

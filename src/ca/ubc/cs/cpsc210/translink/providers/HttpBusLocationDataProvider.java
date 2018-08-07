@@ -26,7 +26,12 @@ public class HttpBusLocationDataProvider extends AbstractHttpDataProvider {
      */
     protected URL getUrl() throws MalformedURLException {
         // TODO: Complete the implementation of this method (Task 10)
-        return null;
+        String url = "http://b210.herokuapp.com/rttiapi/v1/buses?apikey=";
+
+        url += "abc";
+        url += "&stopNo=";
+        url += stop.getNumber();
+        return new URL(url);
     }
 
     @Override

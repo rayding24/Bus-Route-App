@@ -1,11 +1,31 @@
 package ca.ubc.cs.cpsc210.translink.providers;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * Common functionality for file data providers
  */
 public abstract class AbstractFileDataProvider implements DataProvider {
+
+    static byte[] readSourceRaw(InputStream is) {
+        try {
+            final int maxlen = 4 * 1024 * 1024;
+
+            byte[] bytes = new byte[maxlen];
+            int nread = is.read(bytes, 0, maxlen);
+            byte[] xbytes = new byte[1];
+            int xnread = is.read(xbytes, 0, 1);
+            byte[] ans = new byte[nread];
+            System.arraycopy(bytes, 0, ans, 0, nread);
+            return ans;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     /**
      * Read source data from input stream as string
@@ -27,23 +47,6 @@ public abstract class AbstractFileDataProvider implements DataProvider {
         br.close();
 
         return sb.toString();
-    }
-
-    static byte[] readSourceRaw(InputStream is) {
-        try {
-            final int maxlen = 4 * 1024 * 1024;
-
-            byte[] bytes = new byte[maxlen];
-            int nread = is.read(bytes, 0, maxlen);
-            byte[] xbytes = new byte[1];
-            int xnread = is.read(xbytes, 0, 1);
-            byte[] ans = new byte[nread];
-            System.arraycopy(bytes, 0, ans, 0, nread);
-            return ans;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
 }

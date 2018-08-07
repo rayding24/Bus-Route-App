@@ -33,7 +33,8 @@ public class ArrivalsActivity extends Activity {
 
     /**
      * Initialize arrivals list fragment
-     * @param savedInstanceState  the state saved in previous instance
+     *
+     * @param savedInstanceState the state saved in previous instance
      */
     private void initFragment(Bundle savedInstanceState) {
         if (savedInstanceState != null) {

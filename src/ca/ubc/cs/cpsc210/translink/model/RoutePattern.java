@@ -53,12 +53,30 @@ public class RoutePattern {
     }
 
     /**
+     * Set the destination
+     *
+     * @param destination the destination
+     */
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    /**
      * Get the pattern direction
      *
      * @return the direction
      */
     public String getDirection() {
         return direction;
+    }
+
+    /**
+     * Set the direction
+     *
+     * @param direction the direction
+     */
+    public void setDirection(String direction) {
+        this.direction = direction;
     }
 
     /**
@@ -88,15 +106,6 @@ public class RoutePattern {
     }
 
     /**
-     * Set the pattern path: list of coordinates
-     *
-     * @param path the path
-     */
-    public void setPath(List<LatLon> path) {
-        this.path = Collections.unmodifiableList(path);
-    }
-
-    /**
      * Return the list of coordinates making up this pattern
      *
      * @return an unmodifiable list of the coordinates on this route pattern
@@ -106,20 +115,11 @@ public class RoutePattern {
     }
 
     /**
-     * Set the direction
+     * Set the pattern path: list of coordinates
      *
-     * @param direction the direction
+     * @param path the path
      */
-    public void setDirection(String direction) {
-        this.direction = direction;
-    }
-
-    /**
-     * Set the destination
-     *
-     * @param destination the destination
-     */
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public void setPath(List<LatLon> path) {
+        this.path = Collections.unmodifiableList(path);
     }
 }

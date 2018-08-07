@@ -37,18 +37,19 @@ public class RouteParser {
      * and not added to the route.
      *
      * @param jsonResponse string encoding JSON data to be parsed
-     * @throws JSONException when:
-     * <ul>
-     *    <li>JSON data does not have expected format (JSON syntax problem)</li>
-     *    <li>JSON data is not an array</li>
-     * </ul>
-     * If a JSONException is thrown, no stops should be added to the stop manager.
+     * @throws JSONException             when:
+     *                                   <ul>
+     *                                   <li>JSON data does not have expected format (JSON syntax problem)</li>
+     *                                   <li>JSON data is not an array</li>
+     *                                   </ul>
+     *                                   If a JSONException is thrown, no stops should be added to the stop manager.
      * @throws RouteDataMissingException when
-     * <ul>
-     *    <li>JSON data is missing RouteNo, Name, or Patterns element for any route</li>
-     *    <li>The value of the Patterns element is not an array for any route</li>
-     * </ul>
-     * If a RouteDataMissingException is thrown, all correct routes are first added to the route manager.
+     *                                   <ul>
+     *                                   <li>JSON data is missing RouteNo, Name, or Patterns element for any route</li>
+     *                                   <li>The value of the Patterns element is not an array for any route</li>
+     *                                   </ul>
+     *                                   If a RouteDataMissingException is thrown,
+     *                                   all correct routes are first added to the route manager.
      */
     private void parseRoutes(String jsonResponse)
             throws JSONException, RouteDataMissingException {

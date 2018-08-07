@@ -26,7 +26,9 @@ public class HttpArrivalDataProvider extends AbstractHttpDataProvider {
      */
     protected URL getUrl() throws MalformedURLException {
         // TODO: Complete the implementation of this method (Task 8)
-        return null;
+        return new URL("http://b210.herokuapp.com/rttiapi/v1/stops/" + stop.getNumber()
+                + "/estimates?apikey=" + "abc");
+
     }
 
     @Override

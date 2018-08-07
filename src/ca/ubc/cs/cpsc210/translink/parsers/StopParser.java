@@ -8,7 +8,6 @@ import ca.ubc.cs.cpsc210.translink.parsers.exception.StopDataMissingException;
 import ca.ubc.cs.cpsc210.translink.providers.DataProvider;
 import ca.ubc.cs.cpsc210.translink.providers.FileDataProvider;
 import ca.ubc.cs.cpsc210.translink.util.LatLon;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,17 +40,19 @@ public class StopParser {
      * Stores all stops and routes found in the StopManager and RouteManager.
      *
      * @param jsonResponse string encoding JSON data to be parsed
-     * @throws JSONException when:
-     * <ul>
-     *    <li>JSON data does not have expected format (JSON syntax problem)</li>
-     *    <li>JSON data is not an array</li>
-     * </ul>
+     * @throws JSONException            when:
+     *                                  <ul>
+     *                                  <li>JSON data does not have expected format (JSON syntax problem)</li>
+     *                                  <li>JSON data is not an array</li>
+     *                                  </ul>
      * @throws StopDataMissingException when
-     * <ul>
-     *    <li> JSON data is missing Name, StopNo, Routes or location (Latitude or Longitude)
+     *                                  <ul>
+     *                                  <li> JSON data is missing Name,
+     *                                  StopNo, Routes or location (Latitude or Longitude)
      *                                  elements for any stop.</li>
-     * </ul>
-     * If a StopDataMissingException is thrown, all stops for which all required data is available
+     *                                  </ul>
+     *                                  If a StopDataMissingException is thrown,
+     *                                  all stops for which all required data is available
      *                                  are first added to the stop manager.
      */
     private void parseStops(String jsonResponse)

@@ -17,19 +17,19 @@ public class BusRouteLegendOverlay extends Overlay {
     private static final int LINEWIDTH = 150;
     private static final int LINEHEIGHT = 30;
     private static final int TEXTHEIGHT = 40;
+    private static final int[] colors = {Color.RED, Color.BLUE, Color.GREEN, Color.MAGENTA,
+            Color.YELLOW, Color.CYAN, Color.DKGRAY};
     private int topSkip;
     private Map<String, Integer> routes = new HashMap<>();
     private Paint paint;
     private int textHeight;
     private int nextColor;
-    private static final int[] colors = {Color.RED, Color.BLUE, Color.GREEN, Color.MAGENTA,
-            Color.YELLOW, Color.CYAN, Color.DKGRAY};
 
     /**
      * Constructor
      *
      * @param resourceProxy needed for all overlays
-     * @param dpiFactor      scaling factor used for text and spacing
+     * @param dpiFactor     scaling factor used for text and spacing
      */
     public BusRouteLegendOverlay(ResourceProxy resourceProxy, float dpiFactor) {
         super(resourceProxy);
@@ -100,9 +100,10 @@ public class BusRouteLegendOverlay extends Overlay {
 
     /**
      * Adds a route to the legend
-     * @param canvas  the canvas on which legend is drawn
-     * @param screenPosition  the screen position of the top-right corner of legend
-     * @param me map entry containing route and corresponding color to be added to legend
+     *
+     * @param canvas         the canvas on which legend is drawn
+     * @param screenPosition the screen position of the top-right corner of legend
+     * @param me             map entry containing route and corresponding color to be added to legend
      */
     private void addRouteToLegend(Canvas canvas, Point screenPosition, Map.Entry<String, Integer> me) {
         paint.setColor(me.getValue());

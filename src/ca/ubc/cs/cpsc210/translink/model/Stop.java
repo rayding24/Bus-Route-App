@@ -43,12 +43,30 @@ public class Stop implements Iterable<Arrival> {
     }
 
     /**
+     * setter for name
+     *
+     * @param name the new name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
      * getter for locn
      *
      * @return the location
      */
     public LatLon getLocn() {
         return locn;
+    }
+
+    /**
+     * setter for location
+     *
+     * @param locn the new location
+     */
+    public void setLocn(LatLon locn) {
+        this.locn = locn;
     }
 
     /**
@@ -183,23 +201,5 @@ public class Stop implements Iterable<Arrival> {
     public Iterator<Arrival> iterator() {
         // Do not modify the implementation of this method!
         return arrivals.iterator();
-    }
-
-    /**
-     * setter for name
-     *
-     * @param name the new name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * setter for location
-     *
-     * @param locn the new location
-     */
-    public void setLocn(LatLon locn) {
-        this.locn = locn;
     }
 }

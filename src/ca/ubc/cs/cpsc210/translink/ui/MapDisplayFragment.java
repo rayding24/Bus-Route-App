@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import ca.ubc.cs.cpsc210.translink.BusesAreUs;
 import ca.ubc.cs.cpsc210.translink.R;
 import ca.ubc.cs.cpsc210.translink.model.Stop;
 import ca.ubc.cs.cpsc210.translink.model.StopManager;
@@ -286,7 +285,8 @@ public class MapDisplayFragment extends Fragment implements MapEventsReceiver, I
 
     /**
      * Centers map at given GeoPoint
-     * @param center  point at which map is to be centred
+     *
+     * @param center point at which map is to be centred
      */
     private void centerAt(final GeoPoint center) {
         mapView.getViewTreeObserver().addOnGlobalLayoutListener(new MapGlobalDisplayListener(center));
@@ -305,7 +305,7 @@ public class MapDisplayFragment extends Fragment implements MapEventsReceiver, I
 
         LatLon latLon = new LatLon(location.getLatitude(), location.getLongitude());
         Stop nearest = StopManager.getInstance().findNearestTo(latLon);
-        if(nearest == null){
+        if (nearest == null) {
             return;
         }
         Double nearestDist = SphericalGeometry.distanceBetween(latLon, nearest.getLocn());
@@ -316,7 +316,7 @@ public class MapDisplayFragment extends Fragment implements MapEventsReceiver, I
 
         busStopPlotter.updateMarkerOfNearest(nearest);
         locationListener.onLocationChanged(nearest, latLon);
-      //  busStopPlotter.markStops(currentLocation);
+        //  busStopPlotter.markStops(currentLocation);
 
 
     }
@@ -338,7 +338,7 @@ public class MapDisplayFragment extends Fragment implements MapEventsReceiver, I
     /**
      * Called when user's location has changed - handle location change and repaint map
      *
-     * @param location            user's location
+     * @param location           user's location
      * @param myLocationProvider location provider
      */
     @Override

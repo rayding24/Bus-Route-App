@@ -39,15 +39,6 @@ public class Route implements Iterable<Stop> {
     }
 
     /**
-     * Set the name of the route
-     *
-     * @param name The name of the route
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
      * Add the pattern to the route if it is not already there
      *
      * @param pattern the route pattern to be added
@@ -142,6 +133,15 @@ public class Route implements Iterable<Stop> {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Set the name of the route
+     *
+     * @param name The name of the route
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
