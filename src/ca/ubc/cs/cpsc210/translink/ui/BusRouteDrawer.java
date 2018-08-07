@@ -2,14 +2,21 @@ package ca.ubc.cs.cpsc210.translink.ui;
 
 import android.content.Context;
 import ca.ubc.cs.cpsc210.translink.BusesAreUs;
+import ca.ubc.cs.cpsc210.translink.model.Route;
+import ca.ubc.cs.cpsc210.translink.model.RoutePattern;
+import ca.ubc.cs.cpsc210.translink.model.Stop;
+import ca.ubc.cs.cpsc210.translink.model.StopManager;
 import org.osmdroid.DefaultResourceProxyImpl;
 import org.osmdroid.ResourceProxy;
 import org.osmdroid.bonuspack.overlays.Polyline;
+import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static ca.ubc.cs.cpsc210.translink.util.Geometry.rectangleIntersectsLine;
 
 // A bus route drawer
 public class BusRouteDrawer extends MapViewOverlay {
@@ -39,6 +46,40 @@ public class BusRouteDrawer extends MapViewOverlay {
      */
     public void plotRoutes(int zoomLevel) {
         //TODO: complete the implementation of this method (Task 7)
+       // Polyline polyLine = new Polyline(context);
+
+        
+//
+//        Stop s = StopManager.getInstance().getSelected();
+//        List<GeoPoint> path = new ArrayList<>();
+//
+//        updateVisibleArea();
+//        busRouteOverlays.clear();
+//        busRouteLegendOverlay.clear();
+//        if (!(s == null)) {
+//            for (Route r : s.getRoutes()) {
+//
+//
+//                Polyline line;
+//
+//                for (RoutePattern rp : r.getPatterns()) {
+//                    for (int i = 0, size = rp.getPath().size(); i < size - 1; i++) {
+//                        if (rectangleIntersectsLine(northWest, southEast, rp.getPath().get(i), rp.getPath().get(i + 1))) {
+//                            path.add(new GeoPoint(rp.getPath().get(i).getLatitude(), rp.getPath().get(i).getLongitude()));
+//                            path.add(new GeoPoint(rp.getPath().get(i + 1).getLatitude(), rp.getPath().get(i + 1).getLongitude()));
+//                            line = new Polyline(context);
+//                            line.setColor( busRouteLegendOverlay.add(r.getNumber()));
+//                            line.setWidth(getLineWidth(zoomLevel));
+//                            line.setPoints(path);
+//                            busRouteOverlays.add(line);
+//                            path.clear();
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//
+
     }
 
     public List<Polyline> getBusRouteOverlays() {

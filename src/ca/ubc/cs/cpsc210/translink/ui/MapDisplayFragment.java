@@ -10,11 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import ca.ubc.cs.cpsc210.translink.BusesAreUs;
 import ca.ubc.cs.cpsc210.translink.R;
+import ca.ubc.cs.cpsc210.translink.model.Stop;
 import ca.ubc.cs.cpsc210.translink.model.StopManager;
 import ca.ubc.cs.cpsc210.translink.parsers.RouteMapParser;
 import ca.ubc.cs.cpsc210.translink.parsers.StopParser;
 import ca.ubc.cs.cpsc210.translink.parsers.exception.StopDataMissingException;
+import ca.ubc.cs.cpsc210.translink.util.LatLon;
+import ca.ubc.cs.cpsc210.translink.util.SphericalGeometry;
 import org.json.JSONException;
 import org.osmdroid.api.IMapController;
 import org.osmdroid.bonuspack.overlays.MapEventsOverlay;
@@ -296,6 +300,24 @@ public class MapDisplayFragment extends Fragment implements MapEventsReceiver, I
      */
     private void handleLocationChange(Location location) {
         // TODO: complete the implementation of this method (Task 6)
+
+        currentLocation = location;
+
+        LatLon latLon = new LatLon(location.getLatitude(), location.getLongitude());
+        Stop nearest = StopManager.getInstance().findNearestTo(latLon);
+        if(nearest == null){
+            return;
+        }
+        Double nearestDist = SphericalGeometry.distanceBetween(latLon, nearest.getLocn());
+
+
+        //call the other 2 methods to update
+
+
+        busStopPlotter.updateMarkerOfNearest(nearest);
+        locationListener.onLocationChanged(nearest, latLon);
+      //  busStopPlotter.markStops(currentLocation);
+
 
     }
 
