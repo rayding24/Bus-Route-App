@@ -53,9 +53,7 @@ public class BusRouteDrawer extends MapViewOverlay {
         Stop s = StopManager.getInstance().getSelected();
         List<GeoPoint> points = new ArrayList<>();
 
-        updateVisibleArea();
-        busRouteOverlays.clear();
-        busRouteLegendOverlay.clear();
+        initialize();
 
         if (!(s == null)) {
             for (Route r : s.getRoutes()) {
@@ -73,12 +71,21 @@ public class BusRouteDrawer extends MapViewOverlay {
 
     }
 
+    private void initialize() {
+        updateVisibleArea();
+
+        busRouteLegendOverlay.clear();
+
+        busRouteOverlays.clear();
+
+    }
+
     public void plotEachRoutePattern(RoutePattern pattern, int colorNum, int zoomLevel, List<GeoPoint> points) {
         int max = pattern.getPath().size() - 1;
         for (int i = 0; i < max; i++) {
             if (rectangleIntersectsLine(northWest, southEast, pattern.getPath().get(i), pattern.getPath().get(i + 1))) {
 
-                LatLon latlon  = pattern.getPath().get(i);
+                LatLon latlon = pattern.getPath().get(i);
                 LatLon latLon1 = pattern.getPath().get(i + 1);
 
                 points.add(new GeoPoint(latlon.getLatitude(), latlon.getLongitude()));

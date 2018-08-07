@@ -304,11 +304,12 @@ public class MapDisplayFragment extends Fragment implements MapEventsReceiver, I
         currentLocation = location;
 
         LatLon latLon = new LatLon(location.getLatitude(), location.getLongitude());
+
         Stop nearest = StopManager.getInstance().findNearestTo(latLon);
         if (nearest == null) {
             return;
         }
-        Double nearestDist = SphericalGeometry.distanceBetween(latLon, nearest.getLocn());
+      //  Double nearestDist = SphericalGeometry.distanceBetween(latLon, nearest.getLocn());
 
 
         //call the other 2 methods to update
